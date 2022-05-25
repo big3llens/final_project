@@ -14,17 +14,24 @@ import java.util.List;
 public class EmployeeService {
 
     private final EmployeeRepositories repositories;
+    StringBuilder sb = new StringBuilder();
 
-    public List<EmployeeDto> findAll(){
-        List<Employee> employeeList = repositories.findAll();
+    public List<EmployeeDto> findAll(Integer id){
+        List<Employee> employeeList = repositories.findAllByOrganization_Id(id);
         List<EmployeeDto> employeeDtos = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
         for (Employee el: employeeList) {
+            sb.setLength(0);
             employeeDtos.add(new EmployeeDto(sb.append(el.getLastName()).append(" ").append(el.getFirstName()).append(" ").append(el.getMiddleName()).toString(),
-                    el.getPosition(), el.getLocaPhoneNumber(), el.getPhoneNumberCity(), el.getMobilePhoneNumber()));
+                    el.getDepartment().getDepartmentName(), el.getPosition(), el.getLocalPhoneNumber(), el.getPhoneNumberCity(), el.getMobilePhoneNumber(), el.getEmail()));
         }
         return employeeDtos;
+    }
 
+    public EmployeeDto findEmployeeByLastName(String name){
+        Employee tempEmp = repositories.findEmployeeByLastName(name);
+        sb.setLength(0);
+        return new EmployeeDto(sb.append(tempEmp.getLastName()).append(" ").append(tempEmp.getFirstName()).append(" ").append(tempEmp.getMiddleName()).toString(),
+                tempEmp.getDepartment().getDepartmentName(), tempEmp.getPosition(), tempEmp.getLocalPhoneNumber(), tempEmp.getPhoneNumberCity(), tempEmp.getMobilePhoneNumber(), tempEmp.getEmail());
     }
 
 }

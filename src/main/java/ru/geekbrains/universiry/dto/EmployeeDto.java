@@ -7,8 +7,10 @@ import lombok.Data;
 @AllArgsConstructor
 public class EmployeeDto {
     private String name;
+    private String department;
     private String position;
-    private int locaPhoneNumber;
-    private int phoneNumberCity;
-    private long mobilePhoneNumber;
+    private Integer localPhoneNumber;
+    private Integer phoneNumberCity;
+    private Long mobilePhoneNumber;
+    private String email;
 }

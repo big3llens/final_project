@@ -28,16 +28,16 @@ public class Employee {
     private String position;
 
     @Column(name = "local_phone_number")
-    private int locaPhoneNumber;
+    private Integer localPhoneNumber;
 
     @Column(name = "phone_number_city")
-    private int phoneNumberCity;
+    private Integer phoneNumberCity;
 
     @Column(name = "mobile_phone_number")
-    private long mobilePhoneNumber;
+    private Long mobilePhoneNumber;
 
-//    @Column(name = "fax")
-//    private int fax;
+    @Column(name = "fax")
+    private Integer fax;
 
     @Column(name = "email")
     private String email;
@@ -46,10 +46,21 @@ public class Employee {
     private boolean print;
 
     @Column(name = "priorities")
-    private byte priorities;
+    private Byte priorities;
 
     @ManyToOne
     @JoinColumn(name = "organization_id")
     private Organization organization;
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "office_adress_id")
+    private OfficeAdress officeAdress;
+
+    @ManyToOne
+    @JoinColumn(name = "room_number_id")
+    private RoomNumber roomNumber;
 }

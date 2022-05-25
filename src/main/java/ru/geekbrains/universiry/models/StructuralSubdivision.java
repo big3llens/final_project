@@ -12,7 +12,7 @@ public class StructuralSubdivision {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "structural_subdivision_name")
     private String name;
