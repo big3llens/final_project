@@ -32,7 +32,7 @@
     <meta property="og:title" content="ПСБ - Сервис">
     <meta property="og:type" content="website">
   </head>
-  <body class="u-body u-xl-mode" ng-controller = "indexController" ng-init="getEmployeeServ()">
+  <body class="u-body u-xl-mode" ng-controller = "indexController" ng-init="getEmployeesByOrganization(3)">
     <section class="u-clearfix u-section-1" id="sec-5368">
       <div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-align-right u-text u-text-default u-text-1">
@@ -41,24 +41,9 @@
         <p class="u-align-center u-text u-text-default u-text-2">Сотрудники компании "ПСБ - Сервис"</p>
       </div>
     </section>
-    <section class="u-align-center u-clearfix u-section-2" id="sec-fbd4">
+    <section class="u-align-right u-clearfix u-section-2" id="sec-e548">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-align-center u-form u-form-1">
-          <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="email">
-            <div class="u-form-group u-form-name u-label-none">
-              <label for="name-ef64" class="u-label">Name</label>
-              <input type="text" placeholder="Введите фамилию для поиска" id="name-ef64" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-group u-form-submit">
-              <a href="#" class="u-border-1 u-border-active-black u-border-black u-border-hover-palette-4-light-1 u-btn u-btn-round u-btn-submit u-button-style u-palette-4-light-1 u-radius-50 u-text-black u-text-hover-white u-btn-1"
-              ng-click="searchByName(submit)">Найти</a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-            <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-            <input type="hidden" value="" name="recaptchaResponse">
-          </form>
-        </div>
+        <a href="found_employee.html" data-page-id="866821952" class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-light-1 u-radius-50 u-btn-1">поиск по фамилии</a>
       </div>
     </section>
     <section class="u-clearfix u-section-3" id="sec-d6ae">
@@ -75,40 +60,30 @@
               <col width="13.900000000000006%">
             </colgroup>
             <thead class="u-palette-4-base u-table-header u-table-header-1">
-            <tr style="height: 21px;">
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-1">Имя</th>
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-2">Отдел</th>
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-3">Должность</th>
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-4">Местный телефон</th>
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-5">Городской телефон</th>
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-6">Моб-й телефон</th>
-              <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-7">Почта</th>
-            </tr>
+              <tr style="height: 21px;">
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-1">Имя</th>
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-2">Отдел</th>
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-3">Должность</th>
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-4">Местный телефон</th>
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-5">Городской телефон</th>
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-6">Моб-й телефон</th>
+                <th class="u-border-1 u-border-grey-90 u-palette-4-light-1 u-table-cell u-table-cell-7">Почта</th>
+              </tr>
             </thead>
             <tbody class="u-table-body">
-            <!--              <tr style="height: 75px;" ng-repeat="eserv in EmployeeServDtoList">-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-first-column u-table-cell">{{eserv.name}}</td>-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-table-cell">{{eserv.department}}</td>-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-table-cell">{{eserv.position}}</td>-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-table-cell">{{eserv.locaPhoneNumber}}</td>-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-table-cell">{{eserv.phoneNumberCity}}</td>-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-table-cell">{{eserv.mobilePhoneNumber}}</td>-->
-            <!--                <td class="u-border-1 u-border-grey-30 u-table-cell">{{eserv.email}}</td>-->
-            <!--              </tr>-->
-            <tr style="height: 75px;" ng-repeat="e in EmployeeServDtoList">
-              <td class="u-border-1 u-border-grey-30 u-first-column u-table-cell">{{e.name}}</td>
-              <td class="u-border-1 u-border-grey-30 u-table-cell">{{e.department}}</td>
-              <td class="u-border-1 u-border-grey-30 u-table-cell">{{e.position}}</td>
-              <td class="u-border-1 u-border-grey-30 u-table-cell">{{e.localPhoneNumber}}</td>
-              <td class="u-border-1 u-border-grey-30 u-table-cell">{{e.phoneNumberCity}}</td>
-              <td class="u-border-1 u-border-grey-30 u-table-cell">{{e.mobilePhoneNumber}}</td>
-              <td class="u-border-1 u-border-grey-30 u-table-cell">{{e.email}}</td>
+            <tr style="height: 75px;" ng-repeat="es in EmployeeDtoList">
+              <td class="u-border-1 u-border-grey-30 u-first-column u-table-cell">{{es.name}}</td>
+              <td class="u-border-1 u-border-grey-30 u-table-cell">{{es.department}}</td>
+              <td class="u-border-1 u-border-grey-30 u-table-cell">{{es.position}}</td>
+              <td class="u-border-1 u-border-grey-30 u-table-cell">{{es.localPhoneNumber}}</td>
+              <td class="u-border-1 u-border-grey-30 u-table-cell">{{es.phoneNumberCity}}</td>
+              <td class="u-border-1 u-border-grey-30 u-table-cell">{{es.mobilePhoneNumber}}</td>
+              <td class="u-border-1 u-border-grey-30 u-table-cell">{{es.email}}</td>
             </tr>
             </tbody>
           </table>
         </div>
       </div>
-
     </section>
     
     

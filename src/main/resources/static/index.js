@@ -1,63 +1,49 @@
 angular.module('app', []).controller('indexController', function ($scope, $http) {
     const contextPath = 'http://localhost:8183/1';
 
-    $scope.getEmployeeDev = function () {
+    $scope.getEmployeesByOrganization = function (orgId) {
             $http({
-                url: contextPath + '/psb/' + 1,
+                url: contextPath + '/findAllByOrganization',
                 method: 'GET',
                 params: {
-
+                    orgId: orgId
                 }
             }).then(function (response) {
-                $scope.EmployeeDevDtoList = response.data;
+                if (orgId === 1) {$scope.EmployeeDevDtoList = response.data; console.log($scope.EmployeeDevDtoList); return;}
+                if (orgId === 2) {$scope.EmployeeInvestDtoList = response.data; console.log($scope.EmployeeInvestDtoList); return;}
+                $scope.EmployeeServDtoList = response.data;
+                console.log($scope.EmployeeServDtoList);
             });
     };
-
-    $scope.goBack = function() {
-        window.history.back();
-    };
-
-    // $scope.searchByName = function (){
-    //     $http({
-    //         url: contextPath + '/searchByName/' + $scope.name,
-    //         method: 'GET',
-    //         params: {
-    //
-    //         }
-    //     }).then(function (response) {
-    //         $scope.EmployeeDevDtoList = response.data;
-    //         $scope.semp = '';
-    //         console.log(response)
-    //     });
-    // };
 
     $scope.searchByName = function (){
-        $http.post(contextPath + '/searchByName', $scope.EmployeeName)
-            .then(function (response) {
-                // console.log('sended:');
-                // console.log($scope.newProduct);
-                // console.log('received');
-                // console.log(response.data);
-                console.log($scope.EmployeeName)
-                $scope.EmployeeName = null;
-                $scope.finderEmployee = response.data;
-            });
-    };
-
-    $scope.getEmployeeServ = function () {
         $http({
-            url: contextPath + '/psb/' + 2,
+            url: contextPath + '/searchEmployeeByName',
             method: 'GET',
             params: {
-
+                name: $scope.semp
             }
         }).then(function (response) {
-            $scope.EmployeeServDtoList = response.data;
+            $scope.finderEmployee = response.data;
+            $scope.semp = '';
+            console.log($scope.finderEmployee)
+            console.log(response)
+        });
+    };
+
+    $scope.hideEmployee = function (id){
+        $http({
+            url: contextPath + '/hideEmployee',
+            method: 'GET',
+            params: {
+                id: id
+            }
         });
     };
 
 
 
-    // $scope.fillTable();
-
+    $scope.goBack = function() {
+        window.history.back();
+    };
 });

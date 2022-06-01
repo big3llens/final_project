@@ -53,6 +53,10 @@ public class Employee {
     private Organization organization;
 
     @ManyToOne
+    @JoinColumn(name = "structural_subdivision_id")
+    private StructuralSubdivision structuralSubdivision;
+
+    @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
