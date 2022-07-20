@@ -1,16 +1,19 @@
 package ru.geekbrains.universiry.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
-@Table(schema = "project_schema", name = "room_number")
-public class RoomNumber {
+@Data
+@Table(schema = "project_schema", name = "roles")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-    @Column(name = "number")
-    private Short roomNumber;
+    @Column(name = "name")
+    private String name;
 }

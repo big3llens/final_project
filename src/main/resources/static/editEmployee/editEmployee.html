@@ -1,0 +1,68 @@
+<div class="container">
+    <div >
+        <form ng-submit="findEmployeeByName()">
+            <div class="form-row align-items-center">
+                <div class="form-group col-md-6">
+                    <label class="sr-only" for="inlineFormInput">Фамилия</label>
+                    <input type="text" class="form-control mb-2" id="inlineFormInput" ng-model="lastName" placeholder="Введите фамилию для поиска">
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-primary mb-2">Найти</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div ng-show="finderEmployee.name != null">
+        <h3>Редактирование сотрудника: {{finderEmployee.name}}</h3>
+        <form novalidate ng-submit="submitEditEmployee()">
+            <div class="form-group col-md-6">
+                <label for="editedLastName">Фамилия</label>
+                <input class="form-control" type="text" ng-model="editedEmployee.lastName" id="editedLastName" placeholder="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="organization">Организация</label>
+                <select class="form-control" ng-model="editedEmployee.organization" ng-options="organization as organization.organizationName for organization in organizations track by organization.id" type="text"  id="organization">
+                    <option ng-repeat="org in organizations" value="{{org.organizationName}}">{{org.organizationName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="department">Отдел</label>
+                <select class="form-control" ng-model="editedEmployee.department" ng-options="department as department.departmentName for department in departments track by department.id" type="text"  id="department">
+                    <option ng-repeat="d in departments" value="{{d.departmentName}}">{{d.departmentName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="editedPosition">Должность</label>
+                <input class="form-control" type="text" ng-model="editedEmployee.position" id="editedPosition">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="editedLocalPhoneNumber">Местный телефон</label>
+                <input class="form-control" type="number" ng-model="editedEmployee.localPhoneNumber" id="editedLocalPhoneNumber">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="editedMobilePhoneNumber">Мобильный телефон</label>
+                <input class="form-control" type="number" ng-model="editedEmployee.mobilePhoneNumber" id="editedMobilePhoneNumber">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="test">Отображение в списке</label>
+                <select class="form-control" ng-model="editedEmployee.print" type="text"  id="test">
+                    <option ng-repeat="p in prints" value="{{p.print}}">{{p.id}}</option>
+                </select>
+            </div>
+<!--            <div class="form-group col-md-6">-->
+<!--                <label for="test">Кабинет</label>-->
+<!--                <select class="form-control" ng-model="editedEmployee.department" ng-options="department as department.departmentName for department in departments track by department.id" type="text"  id="test">-->
+<!--                    <option ng-repeat="d in departments" value="{{d.departmentName}}">{{d.departmentName}}</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="form-group col-md-6">
+                <label for="editEmail">Почта</label>
+                <input class="form-control" type="text" ng-model="editedEmployee.email" id="editEmail">
+            </div>
+            <div>
+                <button class="btn btn-success" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>

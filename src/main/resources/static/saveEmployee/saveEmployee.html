@@ -1,0 +1,56 @@
+<div class="container">
+    <div ng-init="init()">
+        <h3>Добавление сотрудника</h3>
+        <form novalidate ng-submit="submitSaveEmployee">
+            <div class="form-group col-md-6">
+                <label for="lastName">Фамилия</label>
+                <input class="form-control" type="text" ng-model="newEmployee.lastName" id="lastName" placeholder="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="firstName">Имя</label>
+                <input class="form-control" type="text" ng-model="newEmployee.firstName" id="firstName" placeholder="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="middleName">Отчество</label>
+                <input class="form-control" type="text" ng-model="newEmployee.middleName" id="middleName" placeholder="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="organization">Организация</label>
+                <select class="form-control" ng-model="newEmployee.organization" ng-options="organization as organization.organizationName for organization in organizations track by organization.id" type="text"  id="organization">
+                    <option ng-repeat="org in organizations" value="{{org.organizationName}}">{{org.organizationName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="department">Отдел</label>
+                <select class="form-control" ng-model="newEmployee.department" ng-options="department as department.departmentName for department in departments track by department.id" type="text"  id="department">
+                    <option ng-repeat="d in departments" value="{{d.departmentName}}">{{d.departmentName}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="editedPosition">Должность</label>
+                <input class="form-control" type="text" ng-model="newEmployee.position" id="editedPosition">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="editedLocalPhoneNumber">Местный телефон</label>
+                <input class="form-control" type="number" ng-model="newEmployee.localPhoneNumber" id="editedLocalPhoneNumber">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="editedMobilePhoneNumber">Мобильный телефон</label>
+                <input class="form-control" type="number" ng-model="newEmployee.mobilePhoneNumber" id="editedMobilePhoneNumber">
+            </div>
+<!--            <div class="form-group col-md-6">-->
+<!--                <label for="test">Кабинет</label>-->
+<!--                <select class="form-control" ng-model="newEmployee.roomNumber" ng-options="roomNumber as roomNumber.roomNumber for roomNumber in roomNumbers track by roomNumber.id" type="text"  id="test">-->
+<!--                    <option ng-repeat="r in roomNumbers" value="{{r.roomNumbers}}">{{r.departmentName}}</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="form-group col-md-6">
+                <label for="newEmail">Почта</label>
+                <input class="form-control" type="text" ng-model="newEmployee.email" id="newEmail">
+            </div>
+            <div>
+                <button class="btn btn-success" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>

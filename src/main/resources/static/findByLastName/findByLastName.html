@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Справочник группы компаний ПСБ</h1>
+    <form ng-submit="findEmployeeByName()">
+        <div class="form-row align-items-center">
+            <div class="form-group col-md-6">
+                <label class="sr-only" for="inlineFormInput">Фамилия</label>
+                <input type="text" class="form-control mb-2" id="inlineFormInput" ng-model="lastName" placeholder="Введите фамилию для поиска">
+            </div>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary mb-2">Найти</button>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Имя</th>
+                <th scope="col">Отдел</th>
+                <th scope="col">Должность</th>
+                <th scope="col">Местный телефон</th>
+                <th scope="col">Городской телефон</th>
+                <th scope="col">Моб-й телефон</th>
+                <th scope="col">Почта</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-show="lastName != null">
+                <th scope="row">{{finderEmployee.name}}</th>
+                <td>{{finderEmployee.department.departmentName}}</td>
+                <td>{{finderEmployee.position}}</td>
+                <td>{{finderEmployee.localPhoneNumber}}</td>
+                <td>{{finderEmployee.phoneNumberCity}}</td>
+                <td>{{finderEmployee.mobilePhoneNumber}}</td>
+                <td>{{finderEmployee.email}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

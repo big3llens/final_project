@@ -4,6 +4,7 @@ package ru.geekbrains.universiry.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Data
@@ -43,10 +44,16 @@ public class Employee {
     private String email;
 
     @Column(name = "print")
-    private boolean print;
+    private boolean isPrint;
 
     @Column(name = "priorities")
     private Byte priorities;
+
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "organization_id")
@@ -62,9 +69,15 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "office_adress_id")
-    private OfficeAdress officeAdress;
+    private OfficeAddress officeAddress;
 
     @ManyToOne
     @JoinColumn(name = "room_number_id")
     private RoomNumber roomNumber;
+
+    @ManyToMany
+    @JoinTable(schema = "project_schema", name = "users_roles",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 }

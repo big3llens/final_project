@@ -1,0 +1,40 @@
+<div class="container" ng-init="getEmployeesByOrganization(2)">
+  <h1>Справочник группы компаний ПСБ</h1>
+  <div class="dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Выберете компанию:
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#!/">Все компании</a>
+      <a class="dropdown-item" href="#!/groups/dev">ПСБ-Девелопмент</a>
+      <a class="dropdown-item" href="#!/groups/invest">ПСБ-Сервис</a>
+      <a class="dropdown-item" href="#!/groups/service">ПСБ-Инвестиции</a>
+    </div>
+  </div>
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Имя</th>
+        <th scope="col">Отдел</th>
+        <th scope="col">Должность</th>
+        <th scope="col">Местный телефон</th>
+        <th scope="col">Городской телефон</th>
+        <th scope="col">Моб-й телефон</th>
+        <th scope="col">Почта</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="e in EmployeesDtoList">
+        <th scope="row">{{e.name}}</th>
+        <td>{{e.department}}</td>
+        <td>{{e.position}}</td>
+        <td>{{e.localPhoneNumber}}</td>
+        <td>{{e.phoneNumberCity}}</td>
+        <td>{{e.mobilePhoneNumber}}</td>
+        <td>{{e.email}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
