@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.universiry.dto.EmployeeDto;
 import ru.geekbrains.universiry.dto.EditEmployeeDto;
+import ru.geekbrains.universiry.dto.SaveEmployeeDto;
 import ru.geekbrains.universiry.models.Employee;
 import ru.geekbrains.universiry.services.EmployeeService;
 
@@ -69,7 +70,7 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     @ResponseBody
-    private void saveEmployee(@RequestBody EditEmployeeDto employeeDto){
+    private void saveEmployee(@RequestBody SaveEmployeeDto employeeDto){
         employeeService.saveEmployee(employeeDto);
         System.out.println(employeeDto.toString());
     }

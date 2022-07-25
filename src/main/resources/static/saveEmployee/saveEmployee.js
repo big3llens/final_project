@@ -11,7 +11,7 @@ angular.module('app').controller('saveEmployeeController', function ($scope, $ht
     };
 
     $scope.submitSaveEmployee = function (){
-        $http.post(contextPath + '/saveEmployee', $scope.editedEmployee, console.log($scope.newEmployee))
+        $http.post(contextPath + '/saveEmployee', $scope.newEmployee, console.log($scope.newEmployee))
             .then(function successCallback(response) {
                 $scope.newEmployee = null;
             }, function errorCallback(response) {

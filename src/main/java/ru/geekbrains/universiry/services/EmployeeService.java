@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.universiry.dto.EditEmployeeDto;
 import ru.geekbrains.universiry.dto.EmployeeDto;
+import ru.geekbrains.universiry.dto.SaveEmployeeDto;
 import ru.geekbrains.universiry.exceptions.ResourceNotFoundException;
 import ru.geekbrains.universiry.models.Employee;
 import ru.geekbrains.universiry.models.Role;
@@ -66,15 +67,18 @@ public class EmployeeService implements UserDetailsService {
         tempEmp.setPhoneNumberCity(employeeDto.getPhoneNumberCity());
         tempEmp.setMobilePhoneNumber(employeeDto.getMobilePhoneNumber());
         tempEmp.setRoomNumber(employeeDto.getRoomNumber());
-        tempEmp.setEmail(tempEmp.getEmail());
+        tempEmp.setEmail(employeeDto.getEmail());
         if (employeeDto.getPrint().equals("false")) tempEmp.setPrint(Boolean.FALSE);
         else tempEmp.setPrint(Boolean.TRUE);
         tempEmp.setPrint(tempEmp.isPrint());
         employeeRepositories.save(tempEmp);
     }
 
-    public void saveEmployee(EditEmployeeDto employeeDto){
+    public void saveEmployee(SaveEmployeeDto employeeDto){
         Employee tempEmp = new Employee();
+        tempEmp.setLastName(employeeDto.getLastName());
+        tempEmp.setFirstName(employeeDto.getFirstName());
+        tempEmp.setMiddleName(employeeDto.getMiddleName());
         tempEmp.setDepartment(employeeDto.getDepartment());
         tempEmp.setOrganization(employeeDto.getOrganization());
         tempEmp.setPosition(employeeDto.getPosition());
@@ -82,8 +86,9 @@ public class EmployeeService implements UserDetailsService {
         tempEmp.setPhoneNumberCity(employeeDto.getPhoneNumberCity());
         tempEmp.setMobilePhoneNumber(employeeDto.getMobilePhoneNumber());
         tempEmp.setRoomNumber(employeeDto.getRoomNumber());
-        tempEmp.setEmail(tempEmp.getEmail());
+        tempEmp.setEmail(employeeDto.getEmail());
         tempEmp.setPrint(Boolean.TRUE);
+        System.out.println(tempEmp);
         employeeRepositories.save(tempEmp);
     }
 

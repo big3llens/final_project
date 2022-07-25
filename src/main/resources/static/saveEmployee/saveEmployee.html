@@ -1,7 +1,7 @@
 <div class="container">
     <div ng-init="init()">
         <h3>Добавление сотрудника</h3>
-        <form novalidate ng-submit="submitSaveEmployee">
+        <form novalidate ng-submit="submitSaveEmployee()">
             <div class="form-group col-md-6">
                 <label for="lastName">Фамилия</label>
                 <input class="form-control" type="text" ng-model="newEmployee.lastName" id="lastName" placeholder="">
